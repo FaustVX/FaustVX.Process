@@ -7,6 +7,18 @@ namespace FaustVX.Process
         public ExitCode(int code)
             => Code = code;
         
+        public static bool operator true(ExitCode code)
+            => (bool)code;
+        
+        public static bool operator false(ExitCode code)
+            => !(bool)code;
+
+        public static ExitCode operator |(ExitCode left, ExitCode right)
+            => right;
+
+        public static ExitCode operator &(ExitCode left, ExitCode right)
+            => right;
+        
         public static implicit operator bool(ExitCode code)
             => code.Code == 0;
         
