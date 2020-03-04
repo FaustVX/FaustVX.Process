@@ -29,6 +29,7 @@ namespace FaustVX.Process.Test
             var git = Process.CreateProcess("git");
             var clone = git("clone", "plop", "dfgh").StartAndWaitForExit();
             Assert.IsFalse(clone);
+            Assert.ThrowsException<System.Exception>(()=>clone.ThrowIfNonZero(code => new System.Exception(code.Code.ToString())));
         }
     }
 }
